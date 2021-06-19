@@ -3,10 +3,10 @@ import Task from '../components/Task';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Example/Task',
   component: Task,
   //👇 Our exports that end in "Data" are not stories.
   excludeStories: /.*Data$/,
+  title: 'Task',
   //👇 Our events will be mapped in Storybook UI
   argTypes: {
     onPinTask: {},
@@ -19,14 +19,14 @@ export const actionsData = {
   onArchiveTask: action('archive-task'),
 };
 
-const Template = args => ({
+const Template = (args, { argTypes }) => ({
   components: { Task },
-  setup() {
-    return { args, ...actionsData };
-  },
-  template: '<Task v-bind="args" />',
+  props: Object.keys(argTypes),
+  // setup() {
+  //   return { args, ...actionsData };
+  // },
+  template: '<Task v-bind="$props" v-on="$props"/>',
 });
-
 export const Default = Template.bind({});
 Default.args = {
   task: {
