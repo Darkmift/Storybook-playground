@@ -1,34 +1,36 @@
-import Task from '../components/Task';
-
 import { action } from '@storybook/addon-actions';
 
+import Task from '../components/Task';
+
 export default {
+  title: 'Example/Task',
   component: Task,
-  //👇 Our exports that end in "Data" are not stories.
-  excludeStories: /.*Data$/,
-  title: 'Task',
-  //👇 Our events will be mapped in Storybook UI
   argTypes: {
-    onPinTask: {},
-    onArchiveTask: {},
+    // onPinTask: {},
+    // onArchiveTask: {},
+    // task: {
+    //   id: '1',
+    //   title: 'Test Task',
+    //   state: 'TASK_INBOX',
+    //   updatedAt: new Date(2018, 0, 1, 9, 0),
+    // },
   },
 };
 
-export const actionsData = {
-  onPinTask: action('pin-task'),
-  onArchiveTask: action('archive-task'),
-};
+// export const actionsData = {
+//   onPinTask: action('pin-task'),
+//   onArchiveTask: action('archive-task'),
+// };
 
 const Template = (args, { argTypes }) => ({
   components: { Task },
   props: Object.keys(argTypes),
-  // setup() {
-  //   return { args, ...actionsData };
-  // },
+  // ...actionsData,
   template: '<Task v-bind="$props" v-on="$props"/>',
 });
-export const Default = Template.bind({});
-Default.args = {
+
+export const Primary = Template.bind({});
+Primary.args = {
   task: {
     id: '1',
     title: 'Test Task',
@@ -40,7 +42,11 @@ Default.args = {
 export const Pinned = Template.bind({});
 Pinned.args = {
   task: {
-    ...Default.args.task,
+    // ...Primary.args.task,
+    id: '1',
+    title: 'Test Task',
+    state: 'TASK_INBOX',
+    updatedAt: new Date(2018, 0, 1, 9, 0),
     state: 'TASK_PINNED',
   },
 };
@@ -48,7 +54,11 @@ Pinned.args = {
 export const Archived = Template.bind({});
 Archived.args = {
   task: {
-    ...Default.args.task,
+    // ...Primary.args.task,
+    id: '1',
+    title: 'Test Task',
+    state: 'TASK_INBOX',
+    updatedAt: new Date(2018, 0, 1, 9, 0),
     state: 'TASK_ARCHIVED',
   },
 };

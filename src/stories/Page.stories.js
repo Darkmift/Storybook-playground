@@ -1,5 +1,5 @@
 import MyPage from '../components/Page';
-import * as HeaderStories from '../components/Header';
+import * as HeaderStories from './Header.stories';
 
 export default {
   title: 'Example/Page',
