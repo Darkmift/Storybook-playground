@@ -241,7 +241,7 @@ body {
   font-style: 400;
   color: #333;
   font-size: 16px;
-  background-color: #26c6da;
+  background-color: #26c6da !important;
 }
 h1,
 h2,
@@ -856,7 +856,7 @@ a:focus {
   display: flex;
   flex-wrap: wrap;
   height: 3rem;
-  width: 100%;
+  width: 80%;
   background: white;
   transition: all ease-out 150ms;
 }

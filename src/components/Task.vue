@@ -1,27 +1,29 @@
 <template>
-	<div :class="classes">
-		<label class="checkbox">
-			<input type="checkbox" :checked="isChecked" disabled name="checked" />
-			<span class="checkbox-custom" @click="archiveTask" />
-		</label>
-		<div class="title">
-			<input
-				type="text"
-				:value="task.title"
-				readonly
-				placeholder="Input title"
-			/>
-		</div>
-		<div class="actions">
-			<a v-if="!isChecked" @click="pinTask">
-				<span class="icon-star" />
-			</a>
+	<div style="background-color: #26c6da !important;padding:10px;">
+		<div :class="classes" style="margin: 10px">
+			<label class="checkbox">
+				<input type="checkbox" :checked="isChecked" disabled name="checked" />
+				<span class="checkbox-custom" @click="archiveTask" />
+			</label>
+			<div class="title">
+				<input
+					type="text"
+					:value="task.title"
+					readonly
+					placeholder="Input title"
+				/>
+			</div>
+			<div class="actions">
+				<a v-if="!isChecked" @click="pinTask">
+					<span class="icon-star" />
+				</a>
+			</div>
 		</div>
 	</div>
 </template>
 
 <style>
-@import '../assets/index.css';
+@import "../assets/index.css";
 </style>
 
 <script>
